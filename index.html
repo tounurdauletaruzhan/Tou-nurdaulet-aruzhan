@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Нұрдаулет & Аружан — 17.07.2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #faf6ef;
+    --bg2:      #f3ede2;
+    --bg3:      #ede4d6;
+    --sand:     #c8a96e;
+    --sand-dk:  #a07840;
+    --sand-lt:  #ddc48a;
+    --brown:    #3d2408;
+    --text:     #1e1208;
+    --text-dim: rgba(30,18,8,0.68);
+    --line:     rgba(168,130,80,0.25);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* SUBTLE TEXTURE OVERLAY */
+  body::before {
+    content:'';
+    position:fixed;
+    inset:0;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(200,169,110,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(200,169,110,0.08) 0%, transparent 50%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* PARTICLES */
+  #canvas {
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:0.6;
+  }
+
+  /* LANG TOGGLE */
+  .lang-toggle {
+    position:fixed;
+    top:18px; right:18px;
+    z-index:100;
+    display:flex;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:3px;
+    overflow:hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .lang-btn {
+    padding:8px 14px;
+    font-family:'Jost', sans-serif;
+    font-size:10px;
+    font-weight:500;
+    letter-spacing:2px;
+    cursor:pointer;
+    border:none;
+    background:transparent;
+    color:var(--sand-dk);
+    transition:all 0.3s;
+  }
+  .lang-btn.active {
+    background:var(--sand);
+    color:#fff;
+  }
+
+  /* SECTIONS */
+  section {
+    position:relative;
+    z-index:1;
+    padding:65px 28px;
+    max-width:600px;
+    margin:0 auto;
+    text-align:center;
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.9s ease, transform 0.9s ease;
+  }
+  section.visible { opacity:1; transform:translateY(0); }
+
+  /* ORNAMENT SVG */
+  .orn { display:block; margin:0 auto; }
+
+  /* ─── HERO ─── */
+  .hero-top {
+    padding-top:90px;
+    padding-bottom:50px;
+  }
+  .kite-row {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:6px;
+  }
+  .kite-line {
+    height:1px;
+    width:60px;
+    background:linear-gradient(90deg, transparent, var(--sand));
+    opacity:0.5;
+  }
+  .kite-line.r {
+    background:linear-gradient(90deg, var(--sand), transparent);
+  }
+  .kite-diamond {
+    width:8px; height:8px;
+    background:var(--sand);
+    transform:rotate(45deg);
+    opacity:0.6;
+  }
+
+  .hero-names {
+    font-family:'Cormorant Garamond', serif;
+    font-size: clamp(54px, 13vw, 90px);
+    font-weight:300;
+    font-style:italic;
+    line-height:1.0;
+    letter-spacing:1px;
+    color:var(--brown);
+    position:relative;
+  }
+  .hero-amp {
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(30px, 7vw, 48px);
+    font-style:italic;
+    font-weight:300;
+    color:var(--sand);
+    display:block;
+    margin:2px 0;
+  }
+  .hero-date-line {
+    margin-top:22px;
+    font-size:13px;
+    letter-spacing:4px;
+    color:var(--text);
+    font-weight:500;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width:100%;
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--sand), transparent);
+    opacity:0.3;
+    margin:6px 0;
+  }
+  .divider-full {
+    width:100%;
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--sand-dk), transparent);
+    opacity:0.2;
+    margin:0;
+  }
+
+  /* POEM */
+  .poem {
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:clamp(21px, 5vw, 27px);
+    font-weight:400;
+    line-height:2;
+    color:var(--brown);
+  }
+
+  /* LABEL */
+  .sec-label {
+    font-size:11px;
+    letter-spacing:4px;
+    color:var(--sand-dk);
+    opacity:0.9;
+    margin-bottom:28px;
+    font-weight:500;
+  }
+
+  /* INVITE */
+  .invite-cat {
+    font-size:11px;
+    letter-spacing:3px;
+    color:var(--sand-dk);
+    font-weight:600;
+    line-height:2.6;
+    display:block;
+  }
+  .invite-main {
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(21px, 5vw, 26px);
+    font-weight:500;
+    line-height:1.85;
+    color:var(--text);
+    margin-top:26px;
+  }
+
+  /* INVITE CARD */
+  .invite-card {
+    background:#fff;
+    border:1px solid var(--line);
+    padding:40px 32px;
+    box-shadow:0 4px 32px rgba(168,130,80,0.07);
+  }
+  .invite-greeting {
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(23px, 5.5vw, 30px);
+    font-weight:500;
+    font-style:italic;
+    color:var(--brown);
+    line-height:1.6;
+  }
+  .invite-hosts-inline {
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(26px, 6vw, 34px);
+    font-weight:500;
+    font-style:italic;
+    color:var(--sand-dk);
+    margin-top:4px;
+  }
+  .invite-meta {
+    font-size:15px;
+    letter-spacing:1.5px;
+    color:var(--text);
+    line-height:2.2;
+    font-weight:500;
+  }
+
+  /* BAND */
+  .band {
+    background:var(--bg2);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .band2 {
+    background:var(--bg3);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+
+  /* COUNTDOWN */
+  .countdown {
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .cd-box {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+  }
+  .cd-num {
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(36px, 9vw, 54px);
+    font-weight:300;
+    color:var(--brown);
+    line-height:1;
+    width:78px; height:78px;
+    display:flex; align-items:center; justify-content:center;
+    background:#fff;
+    border:1px solid var(--line);
+    box-shadow:0 2px 16px rgba(168,130,80,0.08);
+    animation:softpulse 2s ease-in-out infinite alternate;
+  }
+  @keyframes softpulse {
+    from { box-shadow:0 2px 16px rgba(168,130,80,0.06); }
+    to   { box-shadow:0 4px 24px rgba(168,130,80,0.16); }
+  }
+  .cd-label {
+    font-size:10px;
+    letter-spacing:2px;
+    color:var(--text);
+    font-weight:500;
+  }
+
+  /* DATE BIG */
+  .date-big {
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(44px, 12vw, 76px);
+    font-weight:300;
+    color:var(--brown);
+    line-height:1.1;
+  }
+  .time-big {
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(28px, 7vw, 46px);
+    font-weight:300;
+    color:var(--sand-dk);
+    letter-spacing:6px;
+    margin-top:10px;
+  }
+
+  /* VENUE */
+  .venue-name {
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(32px, 8vw, 50px);
+    font-weight:400;
+    font-style:italic;
+    color:var(--brown);
+    letter-spacing:2px;
+    margin-bottom:10px;
+  }
+  .venue-addr {
+    font-size:15px;
+    color:var(--text-dim);
+    letter-spacing:0.5px;
+    line-height:1.9;
+    margin-bottom:26px;
+  }
+
+  /* BUTTONS */
+  .btn {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 30px;
+    border:1px solid var(--sand);
+    color:var(--sand-dk);
+    text-decoration:none;
+    font-family:'Jost', sans-serif;
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:2.5px;
+    transition:all 0.3s;
+    background:#fff;
+    cursor:pointer;
+    box-shadow:0 2px 12px rgba(168,130,80,0.08);
+  }
+  .btn:hover {
+    background:var(--sand);
+    color:#fff;
+    box-shadow:0 4px 20px rgba(168,130,80,0.22);
+  }
+  .btn-wa {
+    border-color:rgba(37,211,102,0.4);
+    color:#1a7a3a;
+    background:rgba(37,211,102,0.06);
+    font-size:13px;
+    padding:15px 38px;
+    margin-top:8px;
+  }
+  .btn-wa:hover {
+    background:#25d366;
+    color:#fff;
+    border-color:#25d366;
+  }
+  .phone-display {
+    display:block;
+    margin-top:18px;
+    font-size:12px;
+    color:var(--text-dim);
+    letter-spacing:2px;
+  }
+  .phone-num { color:var(--sand-dk); font-weight:500; }
+
+  /* RSVP BUTTONS */
+  .rsvp-grid {
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    max-width:340px;
+    margin:0 auto;
+  }
+  .rsvp-btn {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:16px 24px;
+    text-decoration:none;
+    font-family:'Jost', sans-serif;
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:2px;
+    transition:all 0.3s;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--text);
+    box-shadow:0 2px 12px rgba(168,130,80,0.07);
+    text-align:center;
+  }
+  .rsvp-btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(168,130,80,0.16); }
+  .rsvp-btn.yes  { border-color:rgba(37,180,90,0.35); }
+  .rsvp-btn.yes:hover  { background:rgba(37,180,90,0.07); }
+  .rsvp-btn.no   { border-color:rgba(180,100,80,0.3); }
+  .rsvp-btn.no:hover   { background:rgba(180,100,80,0.06); }
+  .rsvp-btn.pair { border-color:var(--sand); }
+  .rsvp-btn.pair:hover { background:rgba(200,169,110,0.1); }
+  .rsvp-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .dot-yes  { background:#2db85a; }
+  .dot-no   { background:#c0614a; }
+  .dot-pair { background:var(--sand); }
+
+  /* FOOTER */
+  footer {
+    position:relative; z-index:1;
+    text-align:center;
+    padding:40px 24px 70px;
+    background:var(--bg2);
+    border-top:1px solid var(--line);
+  }
+  .footer-hosts {
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(22px, 5.5vw, 32px);
+    font-style:italic;
+    color:var(--brown);
+    margin-top:18px;
+  }
+  .footer-sub {
+    font-size:11px;
+    letter-spacing:4px;
+    color:var(--text-dim);
+    opacity:0.8;
+    margin-top:6px;
+  }
+
+  /* ICON */
+  .icon-gold { stroke:var(--sand-dk); opacity:0.65; margin-bottom:14px; }
+</style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('kz')">KZ</button>
+  <button class="lang-btn" onclick="setLang('ru')">RU</button>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero-top" id="s-hero">
+  <!-- top ornament -->
+  <svg class="orn" width="220" height="36" viewBox="0 0 220 36" fill="none" style="margin-bottom:28px">
+    <line x1="0" y1="18" x2="82" y2="18" stroke="#c8a96e" stroke-width="0.6" opacity="0.45"/>
+    <rect x="89" y="12" width="12" height="12" fill="none" stroke="#c8a96e" stroke-width="0.8" opacity="0.55" transform="rotate(45 95 18)"/>
+    <circle cx="110" cy="18" r="5" fill="none" stroke="#c8a96e" stroke-width="0.8" opacity="0.55"/>
+    <circle cx="110" cy="18" r="1.5" fill="#c8a96e" opacity="0.4"/>
+    <rect x="117" y="12" width="12" height="12" fill="none" stroke="#c8a96e" stroke-width="0.8" opacity="0.55" transform="rotate(45 123 18)"/>
+    <line x1="136" y1="18" x2="220" y2="18" stroke="#c8a96e" stroke-width="0.6" opacity="0.45"/>
+  </svg>
+
+  <div class="hero-names">Нұрдаулет</div>
+  <span class="hero-amp">&amp;</span>
+  <div class="hero-names">Аружан</div>
+
+  <p class="hero-date-line" data-kz>17 ШІЛДЕ &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; АЛМАТЫ</p>
+  <p class="hero-date-line" data-ru style="display:none">17 ИЮЛЯ &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; АЛМАТЫ</p>
+
+  <!-- bottom ornament -->
+  <svg class="orn" width="160" height="28" viewBox="0 0 160 28" fill="none" style="margin-top:26px">
+    <line x1="0" y1="14" x2="55" y2="14" stroke="#c8a96e" stroke-width="0.5" opacity="0.35"/>
+    <polygon points="62,14 68,8 74,14 68,20" fill="none" stroke="#c8a96e" stroke-width="0.7" opacity="0.5"/>
+    <polygon points="86,14 92,8 98,14 92,20" fill="none" stroke="#c8a96e" stroke-width="0.7" opacity="0.5"/>
+    <line x1="105" y1="14" x2="160" y2="14" stroke="#c8a96e" stroke-width="0.5" opacity="0.35"/>
+  </svg>
+</section>
+
+<!-- ═══ POEM ═══ -->
+<section id="s-poem" class="band">
+  <svg class="orn" width="180" height="30" viewBox="0 0 180 30" fill="none" style="margin-bottom:24px">
+    <line x1="0" y1="15" x2="60" y2="15" stroke="#c8a96e" stroke-width="0.5" opacity="0.4"/>
+    <rect x="67" y="9" width="12" height="12" fill="none" stroke="#c8a96e" stroke-width="0.7" opacity="0.5" transform="rotate(45 73 15)"/>
+    <rect x="84" y="9" width="12" height="12" fill="none" stroke="#c8a96e" stroke-width="0.7" opacity="0.3" transform="rotate(45 90 15)"/>
+    <rect x="101" y="9" width="12" height="12" fill="none" stroke="#c8a96e" stroke-width="0.7" opacity="0.5" transform="rotate(45 107 15)"/>
+    <line x1="116" y1="15" x2="180" y2="15" stroke="#c8a96e" stroke-width="0.5" opacity="0.4"/>
+  </svg>
+
+  <p class="poem" data-kz>
+    Бүгін тағы ата-дәстүр жалғасты,<br>
+    Басталмақшы құтты қадам алғашқы,<br>
+    Қол ұстасып отау тіккен қос балам,<br>
+    Көпшіліктің ақ батасын алмақшы
+  </p>
+  <p class="poem" data-ru style="display:none">
+    Сегодня вновь традиция продолжается,<br>
+    Начинается первый счастливый шаг,<br>
+    Взявшись за руки, свили гнёздышко мои дети,<br>
+    И примут благословение многих людей
+  </p>
+
+  <svg class="orn" width="100" height="20" viewBox="0 0 100 20" fill="none" style="margin-top:22px;opacity:0.4">
+    <line x1="0" y1="10" x2="38" y2="10" stroke="#c8a96e" stroke-width="0.5"/>
+    <circle cx="50" cy="10" r="4" fill="none" stroke="#c8a96e" stroke-width="0.7"/>
+    <line x1="62" y1="10" x2="100" y2="10" stroke="#c8a96e" stroke-width="0.5"/>
+  </svg>
+</section>
+
+<!-- ═══ INVITE ═══ -->
+<section id="s-invite">
+  <div class="invite-card" data-kz>
+    <p class="invite-greeting">Құрметті ағайын-туыс,<br>құда-жекжат, дос-жаран!</p>
+    <div class="divider" style="margin:22px auto;width:60%;"></div>
+    <p class="invite-main">
+      Сіздерді ұлымыздың үйлену тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!
+    </p>
+    <div class="divider" style="margin:22px auto;width:40%;"></div>
+    <p class="invite-meta">Той иелері</p>
+    <p class="invite-hosts-inline">Сейдулла &amp; Венера</p>
+    <p class="invite-meta" style="margin-top:14px">17.07.2026 &nbsp;·&nbsp; 17:00</p>
+    <p class="invite-meta">Aq-otay мейрамханасы</p>
+    <p class="invite-meta" style="opacity:0.55">Қарасу ықшамауданы, Озерная көшесі, 2</p>
+  </div>
+
+  <div class="invite-card" data-ru style="display:none">
+    <p class="invite-greeting">Уважаемые родственники,<br>сваты и дорогие друзья!</p>
+    <div class="divider" style="margin:22px auto;width:60%;"></div>
+    <p class="invite-main">
+      Приглашаем вас стать почётным гостем на торжественном той по случаю свадьбы нашего сына Нурдаулета и нашей невестки Аружан!
+    </p>
+    <div class="divider" style="margin:22px auto;width:40%;"></div>
+    <p class="invite-meta">Хозяева торжества</p>
+    <p class="invite-hosts-inline">Сейдулла &amp; Венера</p>
+    <p class="invite-meta" style="margin-top:14px">17.07.2026 &nbsp;·&nbsp; 17:00</p>
+    <p class="invite-meta">Ресторан Aq-otay</p>
+    <p class="invite-meta" style="opacity:0.55">мкр. Карасу, ул. Озёрная, 2</p>
+  </div>
+</section>
+
+<!-- ═══ COUNTDOWN ═══ -->
+<section id="s-cd" class="band2">
+  <p class="sec-label" data-kz>— ТОЙҒА ДЕЙІН ҚАЛДЫ —</p>
+  <p class="sec-label" data-ru style="display:none">— ДО ТОРЖЕСТВА ОСТАЛОСЬ —</p>
+  <div class="countdown">
+    <div class="cd-box">
+      <div class="cd-num" id="cd-days">--</div>
+      <div class="cd-label" data-kz>КҮНДЕР</div>
+      <div class="cd-label" data-ru style="display:none">ДНЕЙ</div>
+    </div>
+    <div class="cd-box">
+      <div class="cd-num" id="cd-hours">--</div>
+      <div class="cd-label" data-kz>САҒАТ</div>
+      <div class="cd-label" data-ru style="display:none">ЧАСОВ</div>
+    </div>
+    <div class="cd-box">
+      <div class="cd-num" id="cd-mins">--</div>
+      <div class="cd-label">МИНУТ</div>
+    </div>
+    <div class="cd-box">
+      <div class="cd-num" id="cd-secs">--</div>
+      <div class="cd-label" data-kz>СЕКУНД</div>
+      <div class="cd-label" data-ru style="display:none">СЕКУНД</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DATE ═══ -->
+<section id="s-date" class="band">
+  <p class="sec-label" data-kz>— КҮН МЕН УАҚЫТ —</p>
+  <p class="sec-label" data-ru style="display:none">— ДАТА И ВРЕМЯ —</p>
+  <svg class="icon-gold" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke-width="0.8">
+    <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+  </svg>
+  <p class="date-big" data-kz>17 Шілде<br><span style="font-size:.52em;letter-spacing:5px;color:var(--text-dim)">2026</span></p>
+  <p class="date-big" data-ru style="display:none">17 Июля<br><span style="font-size:.52em;letter-spacing:5px;color:var(--text-dim)">2026</span></p>
+  <div style="height:18px"></div>
+  <svg class="icon-gold" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="0.8">
+    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+  </svg>
+  <p class="time-big">17:00</p>
+</section>
+
+<!-- ═══ VENUE ═══ -->
+<section id="s-venue">
+  <p class="sec-label" data-kz>— МЕКЕН-ЖАЙ —</p>
+  <p class="sec-label" data-ru style="display:none">— МЕСТО ПРОВЕДЕНИЯ —</p>
+  <svg class="icon-gold" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="0.8">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+  </svg>
+  <p class="venue-name">Aq-otay</p>
+  <p class="venue-addr" data-kz>мейрамханасы<br>Қарасу ықшамауданы, Озерная көшесі, 2<br>Алматы</p>
+  <p class="venue-addr" data-ru style="display:none">ресторан<br>мкр. Карасу, ул. Озёрная, 2<br>Алматы</p>
+  <a href="https://2gis.kz/almaty/geo/70000001023768596/76.916873,43.348181" target="_blank" class="btn">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+    </svg>
+    <span data-kz>2GIS-ТЕ АШУ</span>
+    <span data-ru style="display:none">ОТКРЫТЬ В 2GIS</span>
+  </a>
+</section>
+
+<!-- ═══ RSVP ═══ -->
+<section id="s-rsvp" class="band2">
+  <svg class="orn" width="200" height="34" viewBox="0 0 200 34" fill="none" style="margin-bottom:24px">
+    <line x1="0" y1="17" x2="72" y2="17" stroke="#c8a96e" stroke-width="0.5" opacity="0.35"/>
+    <polygon points="79,17 85,11 91,17 85,23" fill="none" stroke="#c8a96e" stroke-width="0.7" opacity="0.5"/>
+    <circle cx="100" cy="17" r="4" fill="none" stroke="#c8a96e" stroke-width="0.7" opacity="0.5"/>
+    <polygon points="109,17 115,11 121,17 115,23" fill="none" stroke="#c8a96e" stroke-width="0.7" opacity="0.5"/>
+    <line x1="128" y1="17" x2="200" y2="17" stroke="#c8a96e" stroke-width="0.5" opacity="0.35"/>
+  </svg>
+
+  <p class="sec-label" data-kz>— РАСТАУ —</p>
+  <p class="sec-label" data-ru style="display:none">— ПОДТВЕРЖДЕНИЕ —</p>
+
+  <p class="invite-main" style="font-size:16px;margin-bottom:30px" data-kz>
+    Қатысатыныңызды алдын ала хабарлауды сұраймыз
+  </p>
+  <p class="invite-main" style="font-size:16px;margin-bottom:30px" data-ru style="display:none">
+    Просим заранее подтвердить своё участие
+  </p>
+
+  <!-- KZ RSVP -->
+  <div class="rsvp-grid" data-kz>
+    <a href="https://wa.me/77711389486?text=Иә%2C+тойға+қатысамын!+%F0%9F%8E%8A" target="_blank" class="rsvp-btn yes">
+      <span class="rsvp-dot dot-yes"></span>
+      ИӘ, КЕЛЕМІН
+    </a>
+    <a href="https://wa.me/77711389486?text=Жұбаймен+бірге+келемін!+%F0%9F%8C%B9" target="_blank" class="rsvp-btn pair">
+      <span class="rsvp-dot dot-pair"></span>
+      ЖҰБАЙМЕН КЕЛЕМІН
+    </a>
+    <a href="https://wa.me/77711389486?text=Кешіріңіз%2C+тойға+қатыса+алмаймын." target="_blank" class="rsvp-btn no">
+      <span class="rsvp-dot dot-no"></span>
+      ҚАТЫСА АЛМАЙМЫН
+    </a>
+  </div>
+
+  <!-- RU RSVP -->
+  <div class="rsvp-grid" data-ru style="display:none">
+    <a href="https://wa.me/77711389486?text=Да%2C+приду+на+той!+%F0%9F%8E%8A" target="_blank" class="rsvp-btn yes">
+      <span class="rsvp-dot dot-yes"></span>
+      ДА, ПРИДУ
+    </a>
+    <a href="https://wa.me/77711389486?text=Приду+с+супругой%2Fсупругом!+%F0%9F%8C%B9" target="_blank" class="rsvp-btn pair">
+      <span class="rsvp-dot dot-pair"></span>
+      ПРИДУ С СУПРУГОЙ / СУПРУГОМ
+    </a>
+    <a href="https://wa.me/77711389486?text=К+сожалению%2C+прийти+не+смогу." target="_blank" class="rsvp-btn no">
+      <span class="rsvp-dot dot-no"></span>
+      НЕ СМОГУ ПРИЙТИ
+    </a>
+  </div>
+
+  <span class="phone-display" style="margin-top:26px">
+    <span style="font-size:10px;letter-spacing:1px" data-kz>БАЙЛАНЫС&nbsp;/&nbsp;</span>
+    <span style="font-size:10px;letter-spacing:1px" data-ru style="display:none">КОНТАКТ&nbsp;/&nbsp;</span>
+    <span class="phone-num">+7 771 138 94 86</span>
+  </span>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <svg class="orn" width="180" height="28" viewBox="0 0 180 28" fill="none" style="margin-bottom:16px">
+    <line x1="0" y1="14" x2="70" y2="14" stroke="#c8a96e" stroke-width="0.4" opacity="0.3"/>
+    <circle cx="90" cy="14" r="5" fill="none" stroke="#c8a96e" stroke-width="0.6" opacity="0.35"/>
+    <circle cx="90" cy="14" r="1.5" fill="#c8a96e" opacity="0.25"/>
+    <line x1="110" y1="14" x2="180" y2="14" stroke="#c8a96e" stroke-width="0.4" opacity="0.3"/>
+  </svg>
+  <p class="footer-sub" data-kz>ТОЙ ИЕЛЕРІ</p>
+  <p class="footer-sub" data-ru style="display:none">ХОЗЯЕВА ТОРЖЕСТВА</p>
+  <p class="footer-hosts">Сейдулла &amp; Венера</p>
+  <p class="footer-sub" style="margin-top:30px;font-size:9px;opacity:0.3">17 · 07 · 2026</p>
+</footer>
+
+<script>
+// LANGUAGE
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn:${lang==='kz'?'first':'last'}-child`).classList.add('active');
+  document.querySelectorAll('[data-kz]').forEach(el => el.style.display = lang==='kz' ? '' : 'none');
+  document.querySelectorAll('[data-ru]').forEach(el => el.style.display = lang==='ru' ? '' : 'none');
+}
+
+// COUNTDOWN UTC+5
+function tick() {
+  const diff = new Date('2026-07-17T17:00:00+05:00') - new Date();
+  if (diff <= 0) { ['days','hours','mins','secs'].forEach(id => document.getElementById('cd-'+id).textContent='00'); return; }
+  document.getElementById('cd-days').textContent  = String(Math.floor(diff/86400000)).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(Math.floor(diff%86400000/3600000)).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(Math.floor(diff%3600000/60000)).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(Math.floor(diff%60000/1000)).padStart(2,'0');
+}
+tick(); setInterval(tick, 1000);
+
+// SCROLL REVEAL
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.08});
+document.querySelectorAll('section').forEach(s => obs.observe(s));
+document.getElementById('s-hero').classList.add('visible');
+
+// SOFT PARTICLES (petals)
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+function resize(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+resize(); window.addEventListener('resize', resize);
+
+const pts = Array.from({length:35}, () => ({
+  x: Math.random()*window.innerWidth,
+  y: Math.random()*window.innerHeight,
+  r: Math.random()*2.2+0.4,
+  dx: (Math.random()-.5)*0.25,
+  dy: -Math.random()*0.35-.08,
+  o: Math.random()*0.25+0.04,
+  wobble: Math.random()*Math.PI*2,
+  wobbleSpeed: (Math.random()-.5)*0.02
+}));
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  pts.forEach(p => {
+    p.wobble += p.wobbleSpeed;
+    p.x += p.dx + Math.sin(p.wobble)*0.2;
+    p.y += p.dy;
+    if(p.y<-10){ p.y=canvas.height+10; p.x=Math.random()*canvas.width; }
+    if(p.x<-10) p.x=canvas.width+10;
+    if(p.x>canvas.width+10) p.x=-10;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+    ctx.fillStyle = `rgba(180,140,70,${p.o})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>
