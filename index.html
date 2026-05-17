@@ -9,23 +9,23 @@
 <style>
 
 /* ═══════════════════════════
-   TOKENS
+   TOKENS — LAVENDER PALETTE
 ═══════════════════════════ */
 :root{
-  --ivory:   #faf7f1;
-  --ivory2:  #f3ece0;
-  --ivory3:  #ece1d1;
-  --blush:   #d4a5a5;
-  --blush-lt:#eed4d4;
-  --blush-dk:#a07070;
-  --champ:   #c9a55a;
-  --champ-lt:#dfc080;
-  --champ-dk:#8f6e20;
-  --sage:    #a8b5a0;
-  --txt:     #2c1e12;
-  --txt-md:  rgba(44,30,18,.6);
-  --txt-sm:  rgba(44,30,18,.38);
-  --ln:      rgba(180,148,100,.18);
+  --ivory:    #f8f4fc;
+  --ivory2:   #f0e8f8;
+  --ivory3:   #e8d8f4;
+  --blush:    #d4a0c8;
+  --blush-lt: #ead0e8;
+  --blush-dk: #9a6090;
+  --champ:    #9b7fcb;
+  --champ-lt: #c4aaec;
+  --champ-dk: #5c3d98;
+  --sage:     #b8a8d8;
+  --txt:      #18102e;
+  --txt-md:   rgba(24,16,46,.72);
+  --txt-sm:   rgba(24,16,46,.42);
+  --ln:       rgba(150,110,200,.18);
 }
 
 /* ═══════════════════════════
@@ -38,9 +38,9 @@ body{background:var(--ivory);color:var(--txt);font-family:'Jost',sans-serif;font
 body::before{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background:
-    radial-gradient(ellipse 70% 55% at 15%  8%, rgba(212,165,165,.09) 0%,transparent 60%),
-    radial-gradient(ellipse 60% 60% at 85% 92%, rgba(201,165,90,.07)  0%,transparent 60%),
-    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(168,181,160,.05) 0%,transparent 70%);
+    radial-gradient(ellipse 70% 55% at 15%  8%, rgba(180,150,220,.12) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 60% at 85% 92%, rgba(212,160,210,.10) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(155,127,203,.07) 0%,transparent 70%);
 }
 
 /* ═══════════════════════════
@@ -55,7 +55,7 @@ body::before{
 ═══════════════════════════ */
 .ribbon-top,.ribbon-bot{
   position:relative;z-index:10;height:3px;
-  background:linear-gradient(90deg,var(--blush-lt),var(--champ),var(--champ-lt),var(--champ),var(--blush-lt));
+  background:linear-gradient(90deg,var(--blush-lt),var(--champ-lt),var(--champ),var(--champ-lt),var(--blush-lt));
 }
 .ribbon-top{position:fixed;top:0;left:0;width:100%;z-index:300;}
 
@@ -86,7 +86,7 @@ section.visible{opacity:1;transform:translateY(0)}
 /* ═══════════════════════════
    EYEBROW
 ═══════════════════════════ */
-.eyebrow{display:block;font-size:10px;letter-spacing:5px;color:var(--champ);font-weight:500;margin-bottom:22px;opacity:.85;}
+.eyebrow{display:block;font-size:11px;letter-spacing:5px;color:var(--champ);font-weight:500;margin-bottom:22px;opacity:.9;}
 
 /* ═══════════════════════════
    HERO
@@ -96,7 +96,7 @@ section.visible{opacity:1;transform:translateY(0)}
 .glow{
   position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);
   width:300px;height:300px;border-radius:50%;pointer-events:none;
-  background:radial-gradient(circle,rgba(212,165,165,.14) 0%,rgba(201,165,90,.07) 50%,transparent 70%);
+  background:radial-gradient(circle,rgba(180,150,220,.18) 0%,rgba(155,127,203,.09) 50%,transparent 70%);
   animation:glowBreathe 5s ease-in-out infinite;
 }
 @keyframes glowBreathe{
@@ -150,7 +150,7 @@ section.visible{opacity:1;transform:translateY(0)}
 .poem{
   font-family:'Cormorant Garamond',serif;
   font-style:italic;font-weight:300;
-  font-size:clamp(19px,5vw,24px);
+  font-size:clamp(22px,5.5vw,28px);
   line-height:2.15;color:var(--txt);
 }
 
@@ -163,19 +163,19 @@ section.visible{opacity:1;transform:translateY(0)}
 .icard{
   position:relative;
   background:#fff;
-  border:1px solid rgba(201,165,90,.18);
+  border:1px solid rgba(155,127,203,.2);
   border-radius:14px;
   padding:48px 38px;
   box-shadow:
-    0 1px 2px rgba(44,30,18,.03),
-    0 8px 32px rgba(44,30,18,.06),
-    0 0 0 7px rgba(201,165,90,.04);
+    0 1px 2px rgba(24,16,46,.03),
+    0 8px 32px rgba(24,16,46,.07),
+    0 0 0 7px rgba(155,127,203,.05);
   overflow:hidden;
 }
 /* inset frame */
 .icard::before{
   content:'';position:absolute;inset:10px;
-  border:1px solid rgba(201,165,90,.1);
+  border:1px solid rgba(155,127,203,.12);
   border-radius:7px;pointer-events:none;
 }
 /* shimmer */
@@ -196,24 +196,24 @@ section.visible{opacity:1;transform:translateY(0)}
 
 .igreeting{
   font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:clamp(20px,5vw,26px);font-weight:400;
+  font-size:clamp(23px,5.5vw,30px);font-weight:400;
   color:var(--txt);line-height:1.7;
 }
 .ibody{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(18px,4.5vw,22px);font-weight:300;
+  font-size:clamp(21px,5vw,26px);font-weight:300;
   line-height:1.88;color:var(--txt);margin-top:14px;
 }
 .ihosts{
   font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:clamp(24px,5.5vw,34px);font-weight:400;
+  font-size:clamp(28px,6vw,40px);font-weight:400;
   color:var(--champ-dk);margin-top:4px;
 }
 .imeta{
-  font-size:13px;letter-spacing:1.5px;
+  font-size:15px;letter-spacing:1.5px;
   color:var(--txt);line-height:2.2;font-weight:400;
 }
-.imeta-sm{font-size:12px;color:var(--txt-md);line-height:1.85;}
+.imeta-sm{font-size:14px;color:var(--txt-md);line-height:1.85;}
 
 /* ═══════════════════════════
    COUNTDOWN
@@ -227,9 +227,9 @@ section.visible{opacity:1;transform:translateY(0)}
   width:78px;height:78px;
   display:flex;align-items:center;justify-content:center;
   background:#fff;
-  border:1px solid rgba(201,165,90,.2);
+  border:1px solid rgba(155,127,203,.22);
   border-radius:6px;
-  box-shadow:0 3px 0 rgba(201,165,90,.12),0 6px 18px rgba(44,30,18,.05);
+  box-shadow:0 3px 0 rgba(155,127,203,.14),0 6px 18px rgba(24,16,46,.06);
   animation:cdLift 2.5s ease-in-out infinite alternate;
   position:relative;overflow:hidden;
 }
@@ -239,10 +239,10 @@ section.visible{opacity:1;transform:translateY(0)}
   border-radius:0 0 4px 4px;opacity:.5;
 }
 @keyframes cdLift{
-  from{box-shadow:0 3px 0 rgba(201,165,90,.1),0 4px 14px rgba(44,30,18,.04);}
-  to  {box-shadow:0 3px 0 rgba(201,165,90,.2),0 12px 30px rgba(44,30,18,.09);}
+  from{box-shadow:0 3px 0 rgba(155,127,203,.1),0 4px 14px rgba(24,16,46,.05);}
+  to  {box-shadow:0 3px 0 rgba(155,127,203,.22),0 12px 30px rgba(24,16,46,.1);}
 }
-.cd-lbl{font-size:9px;letter-spacing:3px;color:var(--txt-md);font-weight:500;}
+.cd-lbl{font-size:11px;letter-spacing:3px;color:var(--txt-md);font-weight:500;}
 
 /* ═══════════════════════════
    DATE & TIME
@@ -252,7 +252,7 @@ section.visible{opacity:1;transform:translateY(0)}
   font-size:clamp(48px,12vw,78px);color:var(--txt);line-height:1.0;
 }
 .date-year{
-  font-family:'Jost',sans-serif;font-size:11px;
+  font-family:'Jost',sans-serif;font-size:13px;
   letter-spacing:9px;color:var(--txt-md);font-weight:300;margin:6px 0 28px;
 }
 .time-big{
@@ -279,20 +279,20 @@ section.visible{opacity:1;transform:translateY(0)}
   font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
   font-size:clamp(36px,9vw,56px);color:var(--txt);letter-spacing:1px;margin-bottom:6px;
 }
-.venue-type{font-size:10px;letter-spacing:5px;color:var(--txt-md);margin-bottom:12px;}
-.venue-addr{font-size:14px;color:var(--txt-md);line-height:1.95;margin-bottom:28px;}
+.venue-type{font-size:11px;letter-spacing:5px;color:var(--txt-md);margin-bottom:12px;}
+.venue-addr{font-size:16px;color:var(--txt-md);line-height:1.95;margin-bottom:28px;}
 
 /* map button */
 .btn-map{
   display:inline-flex;align-items:center;gap:8px;
   padding:12px 28px;
-  border:1px solid rgba(201,165,90,.45);
+  border:1px solid rgba(155,127,203,.45);
   color:var(--champ-dk);text-decoration:none;
-  font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:2.5px;
+  font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:2.5px;
   border-radius:40px;background:transparent;
   transition:all .3s;cursor:pointer;
 }
-.btn-map:hover{background:var(--champ);color:#fff;border-color:var(--champ);box-shadow:0 6px 22px rgba(201,165,90,.3);transform:translateY(-1px);}
+.btn-map:hover{background:var(--champ);color:#fff;border-color:var(--champ);box-shadow:0 6px 22px rgba(155,127,203,.35);transform:translateY(-1px);}
 
 /* ═══════════════════════════
    RSVP
@@ -313,11 +313,11 @@ section.visible{opacity:1;transform:translateY(0)}
   transform:translateX(-100%);transition:transform .4s;
 }
 .rsvp-btn:hover::before{transform:translateX(100%);}
-.rsvp-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(44,30,18,.1);}
+.rsvp-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(24,16,46,.1);}
 .rsvp-btn.yes {border-color:rgba(90,158,100,.28);}
 .rsvp-btn.yes:hover {background:rgba(90,158,100,.06);}
-.rsvp-btn.pair{border-color:rgba(201,165,90,.38);}
-.rsvp-btn.pair:hover{background:rgba(201,165,90,.06);}
+.rsvp-btn.pair{border-color:rgba(155,127,203,.42);}
+.rsvp-btn.pair:hover{background:rgba(155,127,203,.07);}
 .rsvp-btn.no  {border-color:rgba(176,112,112,.28);}
 .rsvp-btn.no:hover {background:rgba(176,112,112,.06);}
 
@@ -339,10 +339,10 @@ footer{
 }
 .foot-hosts{
   font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
-  font-size:clamp(26px,6.5vw,40px);color:var(--txt);
+  font-size:clamp(28px,7vw,44px);color:var(--txt);
   margin-top:10px;letter-spacing:.5px;
 }
-.foot-sub{font-size:10px;letter-spacing:4px;color:var(--txt-md);opacity:.6;margin-top:6px;}
+.foot-sub{font-size:11px;letter-spacing:4px;color:var(--txt-md);opacity:.75;margin-top:6px;}
 
 /* ═══════════════════════════
    ICON HELPER
@@ -363,7 +363,7 @@ footer{
   gap: 9px;
   padding: 11px 22px;
   background: rgba(250,247,241,.92);
-  border: 1px solid rgba(201,165,90,.35);
+  border: 1px solid rgba(155,127,203,.38);
   border-radius: 40px;
   cursor: pointer;
   font-family: 'Jost', sans-serif;
@@ -381,7 +381,7 @@ footer{
   box-shadow: 0 6px 30px rgba(44,30,18,.14);
   transform: translateX(-50%) translateY(-2px);
 }
-.music-btn.playing { border-color: rgba(201,165,90,.6); }
+.music-btn.playing { border-color: rgba(155,127,203,.6); }
 
 /* animated note icon */
 .music-icon {
@@ -425,9 +425,9 @@ footer{
 <button class="music-btn" id="music-btn" onclick="toggleMusic()" aria-label="Музыка">
   <!-- vinyl icon -->
   <svg class="music-vinyl" width="18" height="18" viewBox="0 0 18 18" fill="none">
-    <circle cx="9" cy="9" r="8"  fill="none" stroke="#c9a55a" stroke-width=".9" opacity=".7"/>
-    <circle cx="9" cy="9" r="5"  fill="none" stroke="#c9a55a" stroke-width=".5" opacity=".4"/>
-    <circle cx="9" cy="9" r="2"  fill="#c9a55a" opacity=".55"/>
+    <circle cx="9" cy="9" r="8"  fill="none" stroke="#9b7fcb" stroke-width=".9" opacity=".7"/>
+    <circle cx="9" cy="9" r="5"  fill="none" stroke="#9b7fcb" stroke-width=".5" opacity=".4"/>
+    <circle cx="9" cy="9" r="2"  fill="#9b7fcb" opacity=".55"/>
     <circle cx="9" cy="9" r=".7" fill="#faf7f1"/>
   </svg>
   <!-- floating notes -->
@@ -443,35 +443,35 @@ footer{
 <div class="glow"></div>
 <!-- top ornament -->
 <svg fill="none" height="30" style="display:block;margin:0 auto 26px" viewbox="0 0 230 30" width="230">
-<line opacity=".32" stroke="#c9a55a" stroke-width=".5" x1="0" x2="90" y1="15" y2="15"></line>
-<circle cx="96" cy="15" fill="none" opacity=".42" r="3" stroke="#c9a55a" stroke-width=".65"></circle>
-<rect fill="none" height="10" opacity=".48" stroke="#c9a55a" stroke-width=".7" transform="rotate(45 110 15)" width="10" x="105" y="10"></rect>
-<circle cx="124" cy="15" fill="none" opacity=".48" r="5.5" stroke="#c9a55a" stroke-width=".8"></circle>
-<circle cx="124" cy="15" fill="#c9a55a" opacity=".26" r="1.8"></circle>
-<rect fill="none" height="10" opacity=".48" stroke="#c9a55a" stroke-width=".7" transform="rotate(45 138 15)" width="10" x="133" y="10"></rect>
-<circle cx="152" cy="15" fill="none" opacity=".42" r="3" stroke="#c9a55a" stroke-width=".65"></circle>
-<line opacity=".32" stroke="#c9a55a" stroke-width=".5" x1="158" x2="230" y1="15" y2="15"></line>
+<line opacity=".32" stroke="#9b7fcb" stroke-width=".5" x1="0" x2="90" y1="15" y2="15"></line>
+<circle cx="96" cy="15" fill="none" opacity=".42" r="3" stroke="#9b7fcb" stroke-width=".65"></circle>
+<rect fill="none" height="10" opacity=".48" stroke="#9b7fcb" stroke-width=".7" transform="rotate(45 110 15)" width="10" x="105" y="10"></rect>
+<circle cx="124" cy="15" fill="none" opacity=".48" r="5.5" stroke="#9b7fcb" stroke-width=".8"></circle>
+<circle cx="124" cy="15" fill="#9b7fcb" opacity=".26" r="1.8"></circle>
+<rect fill="none" height="10" opacity=".48" stroke="#9b7fcb" stroke-width=".7" transform="rotate(45 138 15)" width="10" x="133" y="10"></rect>
+<circle cx="152" cy="15" fill="none" opacity=".42" r="3" stroke="#9b7fcb" stroke-width=".65"></circle>
+<line opacity=".32" stroke="#9b7fcb" stroke-width=".5" x1="158" x2="230" y1="15" y2="15"></line>
 </svg>
 <!-- doves + rings -->
 <div class="dove-row">
 <svg class="dove" fill="none" height="28" viewbox="0 0 40 28" width="40">
-<path d="M2,20 Q9,8 20,10 Q26,6 32,8 Q38,6 38,11 Q36,16 28,16 Q20,20 14,22 Q8,26 2,20Z" fill="none" opacity=".48" stroke="#c9a55a" stroke-width=".85"></path>
-<path d="M20,10 Q22,3 28,3 Q33,3 32,8" fill="none" opacity=".4" stroke="#c9a55a" stroke-width=".75"></path>
-<circle cx="34" cy="9" fill="#c9a55a" opacity=".4" r="1.5"></circle>
-<path d="M9,22 Q7,26 5,28" opacity=".32" stroke="#c9a55a" stroke-width=".6"></path>
+<path d="M2,20 Q9,8 20,10 Q26,6 32,8 Q38,6 38,11 Q36,16 28,16 Q20,20 14,22 Q8,26 2,20Z" fill="none" opacity=".48" stroke="#9b7fcb" stroke-width=".85"></path>
+<path d="M20,10 Q22,3 28,3 Q33,3 32,8" fill="none" opacity=".4" stroke="#9b7fcb" stroke-width=".75"></path>
+<circle cx="34" cy="9" fill="#9b7fcb" opacity=".4" r="1.5"></circle>
+<path d="M9,22 Q7,26 5,28" opacity=".32" stroke="#9b7fcb" stroke-width=".6"></path>
 </svg>
 <svg class="rings" fill="none" height="36" viewbox="0 0 54 36" width="54">
-<circle cx="19" cy="18" fill="none" opacity=".58" r="13" stroke="#c9a55a" stroke-width="1.2"></circle>
-<circle cx="19" cy="18" fill="none" opacity=".2" r="8.5" stroke="#c9a55a" stroke-width=".4"></circle>
-<circle cx="35" cy="18" fill="none" opacity=".52" r="13" stroke="#d4a5a5" stroke-width="1.2"></circle>
-<circle cx="35" cy="18" fill="none" opacity=".2" r="8.5" stroke="#d4a5a5" stroke-width=".4"></circle>
-<text fill="#c9a55a" font-size="6" opacity=".45" x="15" y="9">✦</text>
-<text fill="#d4a5a5" font-size="6" opacity=".4" x="33" y="9">✦</text>
+<circle cx="19" cy="18" fill="none" opacity=".58" r="13" stroke="#9b7fcb" stroke-width="1.2"></circle>
+<circle cx="19" cy="18" fill="none" opacity=".2" r="8.5" stroke="#9b7fcb" stroke-width=".4"></circle>
+<circle cx="35" cy="18" fill="none" opacity=".52" r="13" stroke="#d4a0c8" stroke-width="1.2"></circle>
+<circle cx="35" cy="18" fill="none" opacity=".2" r="8.5" stroke="#d4a0c8" stroke-width=".4"></circle>
+<text fill="#9b7fcb" font-size="6" opacity=".45" x="15" y="9">✦</text>
+<text fill="#d4a0c8" font-size="6" opacity=".4" x="33" y="9">✦</text>
 </svg>
 <svg class="dove r" fill="none" height="28" style="transform:scaleX(-1)" viewbox="0 0 40 28" width="40">
-<path d="M2,20 Q9,8 20,10 Q26,6 32,8 Q38,6 38,11 Q36,16 28,16 Q20,20 14,22 Q8,26 2,20Z" fill="none" opacity=".48" stroke="#c9a55a" stroke-width=".85"></path>
-<path d="M20,10 Q22,3 28,3 Q33,3 32,8" fill="none" opacity=".4" stroke="#c9a55a" stroke-width=".75"></path>
-<circle cx="34" cy="9" fill="#c9a55a" opacity=".4" r="1.5"></circle>
+<path d="M2,20 Q9,8 20,10 Q26,6 32,8 Q38,6 38,11 Q36,16 28,16 Q20,20 14,22 Q8,26 2,20Z" fill="none" opacity=".48" stroke="#9b7fcb" stroke-width=".85"></path>
+<path d="M20,10 Q22,3 28,3 Q33,3 32,8" fill="none" opacity=".4" stroke="#9b7fcb" stroke-width=".75"></path>
+<circle cx="34" cy="9" fill="#9b7fcb" opacity=".4" r="1.5"></circle>
 </svg>
 </div>
 <span class="hero-name">Нұрдаулет</span>
@@ -484,12 +484,12 @@ footer{
 
 <!-- bottom ornament -->
 <svg fill="none" height="22" style="display:block;margin:24px auto 0" viewbox="0 0 170 22" width="170">
-<line opacity=".28" stroke="#c9a55a" stroke-width=".5" x1="0" x2="64" y1="11" y2="11"></line>
-<circle cx="70" cy="11" fill="none" opacity=".38" r="2.8" stroke="#c9a55a" stroke-width=".6"></circle>
-<circle cx="85" cy="11" fill="none" opacity=".42" r="5" stroke="#c9a55a" stroke-width=".75"></circle>
-<circle cx="85" cy="11" fill="#c9a55a" opacity=".22" r="1.8"></circle>
-<circle cx="100" cy="11" fill="none" opacity=".38" r="2.8" stroke="#c9a55a" stroke-width=".6"></circle>
-<line opacity=".28" stroke="#c9a55a" stroke-width=".5" x1="106" x2="170" y1="11" y2="11"></line>
+<line opacity=".28" stroke="#9b7fcb" stroke-width=".5" x1="0" x2="64" y1="11" y2="11"></line>
+<circle cx="70" cy="11" fill="none" opacity=".38" r="2.8" stroke="#9b7fcb" stroke-width=".6"></circle>
+<circle cx="85" cy="11" fill="none" opacity=".42" r="5" stroke="#9b7fcb" stroke-width=".75"></circle>
+<circle cx="85" cy="11" fill="#9b7fcb" opacity=".22" r="1.8"></circle>
+<circle cx="100" cy="11" fill="none" opacity=".38" r="2.8" stroke="#9b7fcb" stroke-width=".6"></circle>
+<line opacity=".28" stroke="#9b7fcb" stroke-width=".5" x1="106" x2="170" y1="11" y2="11"></line>
 </svg>
 </section>
 </div>
@@ -498,14 +498,14 @@ footer{
 <div class="wrap">
 <section id="s-poem">
 <svg fill="none" height="32" style="display:block;margin:0 auto 22px;opacity:.58" viewbox="0 0 190 32" width="190">
-<line opacity=".45" stroke="#c9a55a" stroke-width=".5" x1="0" x2="62" y1="16" y2="16"></line>
-<path d="M67,16 Q72,10 79,7 Q84,4 84,12 Q84,20 77,22 Q72,24 67,16Z" fill="none" opacity=".55" stroke="#c9a55a" stroke-width=".8"></path>
-<path d="M67,16 Q72,22 79,25 Q84,28 84,20 Q84,12 77,10 Q72,8 67,16Z" fill="none" opacity=".35" stroke="#c9a55a" stroke-width=".6"></path>
-<circle cx="97" cy="16" fill="none" opacity=".48" r="6" stroke="#c9a55a" stroke-width=".85"></circle>
-<circle cx="97" cy="16" fill="#c9a55a" opacity=".25" r="2"></circle>
-<path d="M107,16 Q112,10 119,7 Q124,4 124,12 Q124,20 117,22 Q112,24 107,16Z" fill="none" opacity=".55" stroke="#c9a55a" stroke-width=".8"></path>
-<path d="M107,16 Q112,22 119,25 Q124,28 124,20 Q124,12 117,10 Q112,8 107,16Z" fill="none" opacity=".35" stroke="#c9a55a" stroke-width=".6"></path>
-<line opacity=".45" stroke="#c9a55a" stroke-width=".5" x1="130" x2="190" y1="16" y2="16"></line>
+<line opacity=".45" stroke="#9b7fcb" stroke-width=".5" x1="0" x2="62" y1="16" y2="16"></line>
+<path d="M67,16 Q72,10 79,7 Q84,4 84,12 Q84,20 77,22 Q72,24 67,16Z" fill="none" opacity=".55" stroke="#9b7fcb" stroke-width=".8"></path>
+<path d="M67,16 Q72,22 79,25 Q84,28 84,20 Q84,12 77,10 Q72,8 67,16Z" fill="none" opacity=".35" stroke="#9b7fcb" stroke-width=".6"></path>
+<circle cx="97" cy="16" fill="none" opacity=".48" r="6" stroke="#9b7fcb" stroke-width=".85"></circle>
+<circle cx="97" cy="16" fill="#9b7fcb" opacity=".25" r="2"></circle>
+<path d="M107,16 Q112,10 119,7 Q124,4 124,12 Q124,20 117,22 Q112,24 107,16Z" fill="none" opacity=".55" stroke="#9b7fcb" stroke-width=".8"></path>
+<path d="M107,16 Q112,22 119,25 Q124,28 124,20 Q124,12 117,10 Q112,8 107,16Z" fill="none" opacity=".35" stroke="#9b7fcb" stroke-width=".6"></path>
+<line opacity=".45" stroke="#9b7fcb" stroke-width=".5" x1="130" x2="190" y1="16" y2="16"></line>
 </svg>
 <p class="poem">
     Бүгін тағы ата-дәстүр жалғасты,<br/>
@@ -515,11 +515,11 @@ footer{
   </p>
 
 <div class="flora">
-<svg height="13" viewbox="0 0 13 13" width="13"><circle cx="6.5" cy="6.5" fill="#d4a5a5" opacity=".7" r="2"></circle><ellipse cx="6.5" cy="2.2" fill="#d4a5a5" opacity=".32" rx="1.7" ry="2.6"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a5a5" opacity=".32" rx="1.7" ry="2.6" transform="rotate(60 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a5a5" opacity=".32" rx="1.7" ry="2.6" transform="rotate(120 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a5a5" opacity=".32" rx="1.7" ry="2.6" transform="rotate(180 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a5a5" opacity=".32" rx="1.7" ry="2.6" transform="rotate(240 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a5a5" opacity=".32" rx="1.7" ry="2.6" transform="rotate(300 6.5 6.5)"></ellipse></svg>
-<span style="font-size:8px;color:#c9a55a;letter-spacing:4px;opacity:.55">✦ ✦ ✦</span>
-<svg height="17" viewbox="0 0 17 17" width="17"><circle cx="8.5" cy="8.5" fill="#c9a55a" opacity=".6" r="2.5"></circle><ellipse cx="8.5" cy="3" fill="#c9a55a" opacity=".28" rx="2" ry="3"></ellipse><ellipse cx="8.5" cy="3" fill="#c9a55a" opacity=".28" rx="2" ry="3" transform="rotate(60 8.5 8.5)"></ellipse><ellipse cx="8.5" cy="3" fill="#c9a55a" opacity=".28" rx="2" ry="3" transform="rotate(120 8.5 8.5)"></ellipse><ellipse cx="8.5" cy="3" fill="#c9a55a" opacity=".28" rx="2" ry="3" transform="rotate(180 8.5 8.5)"></ellipse><ellipse cx="8.5" cy="3" fill="#c9a55a" opacity=".28" rx="2" ry="3" transform="rotate(240 8.5 8.5)"></ellipse><ellipse cx="8.5" cy="3" fill="#c9a55a" opacity=".28" rx="2" ry="3" transform="rotate(300 8.5 8.5)"></ellipse></svg>
-<span style="font-size:8px;color:#c9a55a;letter-spacing:4px;opacity:.55">✦ ✦ ✦</span>
-<svg height="13" viewbox="0 0 13 13" width="13"><circle cx="6.5" cy="6.5" fill="#d4a5a5" opacity=".7" r="2"></circle><ellipse cx="6.5" cy="2.2" fill="#d4a5a5" opacity=".32" rx="1.7" ry="2.6"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a5a5" opacity=".32" rx="1.7" ry="2.6" transform="rotate(60 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a5a5" opacity=".32" rx="1.7" ry="2.6" transform="rotate(120 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a5a5" opacity=".32" rx="1.7" ry="2.6" transform="rotate(180 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a5a5" opacity=".32" rx="1.7" ry="2.6" transform="rotate(240 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a5a5" opacity=".32" rx="1.7" ry="2.6" transform="rotate(300 6.5 6.5)"></ellipse></svg>
+<svg height="13" viewbox="0 0 13 13" width="13"><circle cx="6.5" cy="6.5" fill="#d4a0c8" opacity=".7" r="2"></circle><ellipse cx="6.5" cy="2.2" fill="#d4a0c8" opacity=".32" rx="1.7" ry="2.6"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a0c8" opacity=".32" rx="1.7" ry="2.6" transform="rotate(60 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a0c8" opacity=".32" rx="1.7" ry="2.6" transform="rotate(120 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a0c8" opacity=".32" rx="1.7" ry="2.6" transform="rotate(180 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a0c8" opacity=".32" rx="1.7" ry="2.6" transform="rotate(240 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a0c8" opacity=".32" rx="1.7" ry="2.6" transform="rotate(300 6.5 6.5)"></ellipse></svg>
+<span style="font-size:8px;color:#9b7fcb;letter-spacing:4px;opacity:.55">✦ ✦ ✦</span>
+<svg height="17" viewbox="0 0 17 17" width="17"><circle cx="8.5" cy="8.5" fill="#9b7fcb" opacity=".6" r="2.5"></circle><ellipse cx="8.5" cy="3" fill="#9b7fcb" opacity=".28" rx="2" ry="3"></ellipse><ellipse cx="8.5" cy="3" fill="#9b7fcb" opacity=".28" rx="2" ry="3" transform="rotate(60 8.5 8.5)"></ellipse><ellipse cx="8.5" cy="3" fill="#9b7fcb" opacity=".28" rx="2" ry="3" transform="rotate(120 8.5 8.5)"></ellipse><ellipse cx="8.5" cy="3" fill="#9b7fcb" opacity=".28" rx="2" ry="3" transform="rotate(180 8.5 8.5)"></ellipse><ellipse cx="8.5" cy="3" fill="#9b7fcb" opacity=".28" rx="2" ry="3" transform="rotate(240 8.5 8.5)"></ellipse><ellipse cx="8.5" cy="3" fill="#9b7fcb" opacity=".28" rx="2" ry="3" transform="rotate(300 8.5 8.5)"></ellipse></svg>
+<span style="font-size:8px;color:#9b7fcb;letter-spacing:4px;opacity:.55">✦ ✦ ✦</span>
+<svg height="13" viewbox="0 0 13 13" width="13"><circle cx="6.5" cy="6.5" fill="#d4a0c8" opacity=".7" r="2"></circle><ellipse cx="6.5" cy="2.2" fill="#d4a0c8" opacity=".32" rx="1.7" ry="2.6"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a0c8" opacity=".32" rx="1.7" ry="2.6" transform="rotate(60 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a0c8" opacity=".32" rx="1.7" ry="2.6" transform="rotate(120 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a0c8" opacity=".32" rx="1.7" ry="2.6" transform="rotate(180 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a0c8" opacity=".32" rx="1.7" ry="2.6" transform="rotate(240 6.5 6.5)"></ellipse><ellipse cx="6.5" cy="2.2" fill="#d4a0c8" opacity=".32" rx="1.7" ry="2.6" transform="rotate(300 6.5 6.5)"></ellipse></svg>
 </div>
 </section>
 </div>
@@ -531,10 +531,10 @@ footer{
 
 <!-- KZ -->
 <div class="icard">
-<svg class="cr tl" fill="none" viewbox="0 0 62 62"><path d="M4,4 Q12,2 16,10 Q20,18 14,24 Q8,30 6,40 Q3,52 14,60" opacity=".65" stroke="#c9a55a" stroke-width=".85"></path><circle cx="11" cy="16" fill="none" opacity=".55" r="4" stroke="#c9a55a" stroke-width=".65"></circle><circle cx="7" cy="32" fill="none" opacity=".5" r="3.5" stroke="#d4a5a5" stroke-width=".65"></circle><circle cx="11" cy="48" fill="none" opacity=".5" r="5" stroke="#c9a55a" stroke-width=".65"></circle></svg>
-<svg class="cr tr" fill="none" viewbox="0 0 62 62"><path d="M4,4 Q12,2 16,10 Q20,18 14,24 Q8,30 6,40 Q3,52 14,60" opacity=".65" stroke="#c9a55a" stroke-width=".85"></path><circle cx="11" cy="16" fill="none" opacity=".55" r="4" stroke="#c9a55a" stroke-width=".65"></circle><circle cx="7" cy="32" fill="none" opacity=".5" r="3.5" stroke="#d4a5a5" stroke-width=".65"></circle></svg>
-<svg class="cr bl" fill="none" viewbox="0 0 62 62"><path d="M4,4 Q12,2 16,10 Q20,18 14,24 Q8,30 6,40 Q3,52 14,60" opacity=".5" stroke="#c9a55a" stroke-width=".85"></path><circle cx="11" cy="16" fill="none" opacity=".45" r="4" stroke="#c9a55a" stroke-width=".65"></circle></svg>
-<svg class="cr br" fill="none" viewbox="0 0 62 62"><path d="M4,4 Q12,2 16,10 Q20,18 14,24 Q8,30 6,40 Q3,52 14,60" opacity=".5" stroke="#c9a55a" stroke-width=".85"></path><circle cx="11" cy="16" fill="none" opacity=".45" r="4" stroke="#c9a55a" stroke-width=".65"></circle></svg>
+<svg class="cr tl" fill="none" viewbox="0 0 62 62"><path d="M4,4 Q12,2 16,10 Q20,18 14,24 Q8,30 6,40 Q3,52 14,60" opacity=".65" stroke="#9b7fcb" stroke-width=".85"></path><circle cx="11" cy="16" fill="none" opacity=".55" r="4" stroke="#9b7fcb" stroke-width=".65"></circle><circle cx="7" cy="32" fill="none" opacity=".5" r="3.5" stroke="#d4a0c8" stroke-width=".65"></circle><circle cx="11" cy="48" fill="none" opacity=".5" r="5" stroke="#9b7fcb" stroke-width=".65"></circle></svg>
+<svg class="cr tr" fill="none" viewbox="0 0 62 62"><path d="M4,4 Q12,2 16,10 Q20,18 14,24 Q8,30 6,40 Q3,52 14,60" opacity=".65" stroke="#9b7fcb" stroke-width=".85"></path><circle cx="11" cy="16" fill="none" opacity=".55" r="4" stroke="#9b7fcb" stroke-width=".65"></circle><circle cx="7" cy="32" fill="none" opacity=".5" r="3.5" stroke="#d4a0c8" stroke-width=".65"></circle></svg>
+<svg class="cr bl" fill="none" viewbox="0 0 62 62"><path d="M4,4 Q12,2 16,10 Q20,18 14,24 Q8,30 6,40 Q3,52 14,60" opacity=".5" stroke="#9b7fcb" stroke-width=".85"></path><circle cx="11" cy="16" fill="none" opacity=".45" r="4" stroke="#9b7fcb" stroke-width=".65"></circle></svg>
+<svg class="cr br" fill="none" viewbox="0 0 62 62"><path d="M4,4 Q12,2 16,10 Q20,18 14,24 Q8,30 6,40 Q3,52 14,60" opacity=".5" stroke="#9b7fcb" stroke-width=".85"></path><circle cx="11" cy="16" fill="none" opacity=".45" r="4" stroke="#9b7fcb" stroke-width=".65"></circle></svg>
 <p class="igreeting">Құрметті ағайын-туыс,<br/>құда-жекжат, дос-жаран!</p>
 <div class="div-row" style="--gm:18px"><div class="div-line"></div><div class="div-gem"></div><div class="div-line"></div></div>
 <p class="ibody">Сіздерді ұлымыздың үйлену тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!</p>
@@ -582,9 +582,9 @@ footer{
 <svg class="ico" fill="none" height="24" stroke-width=".8" style="margin-bottom:10px" viewbox="0 0 24 24" width="24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
 <p class="time-big">17:00</p>
 <div class="candles">
-<svg height="40" viewbox="0 0 12 40" width="12"><rect fill="#c9a55a" height="24" opacity=".35" rx="1" width="6" x="3" y="16"></rect><ellipse class="flame b" cx="6" cy="11" fill="#f0d878" opacity=".5" rx="3" ry="4.5"></ellipse><ellipse class="flame b" cx="6" cy="12.5" fill="#e89a10" opacity=".38" rx="1.8" ry="2.5"></ellipse><line opacity=".5" stroke="#8f6e20" stroke-width=".8" x1="6" x2="6" y1="16" y2="12"></line></svg>
-<svg height="52" viewbox="0 0 14 52" width="14"><rect fill="#c9a55a" height="36" opacity=".44" rx="1" width="8" x="3" y="16"></rect><ellipse class="flame" cx="7" cy="10" fill="#f0d878" opacity=".58" rx="3.8" ry="5.5"></ellipse><ellipse class="flame" cx="7" cy="12" fill="#e89a10" opacity=".44" rx="2.2" ry="3"></ellipse><line opacity=".52" stroke="#8f6e20" stroke-width=".9" x1="7" x2="7" y1="16" y2="12"></line></svg>
-<svg height="40" viewbox="0 0 12 40" width="12"><rect fill="#c9a55a" height="24" opacity=".35" rx="1" width="6" x="3" y="16"></rect><ellipse class="flame c" cx="6" cy="11" fill="#f0d878" opacity=".5" rx="3" ry="4.5"></ellipse><ellipse class="flame c" cx="6" cy="12.5" fill="#e89a10" opacity=".38" rx="1.8" ry="2.5"></ellipse><line opacity=".5" stroke="#8f6e20" stroke-width=".8" x1="6" x2="6" y1="16" y2="12"></line></svg>
+<svg height="40" viewbox="0 0 12 40" width="12"><rect fill="#9b7fcb" height="24" opacity=".35" rx="1" width="6" x="3" y="16"></rect><ellipse class="flame b" cx="6" cy="11" fill="#f0d878" opacity=".5" rx="3" ry="4.5"></ellipse><ellipse class="flame b" cx="6" cy="12.5" fill="#e89a10" opacity=".38" rx="1.8" ry="2.5"></ellipse><line opacity=".5" stroke="#8f6e20" stroke-width=".8" x1="6" x2="6" y1="16" y2="12"></line></svg>
+<svg height="52" viewbox="0 0 14 52" width="14"><rect fill="#9b7fcb" height="36" opacity=".44" rx="1" width="8" x="3" y="16"></rect><ellipse class="flame" cx="7" cy="10" fill="#f0d878" opacity=".58" rx="3.8" ry="5.5"></ellipse><ellipse class="flame" cx="7" cy="12" fill="#e89a10" opacity=".44" rx="2.2" ry="3"></ellipse><line opacity=".52" stroke="#8f6e20" stroke-width=".9" x1="7" x2="7" y1="16" y2="12"></line></svg>
+<svg height="40" viewbox="0 0 12 40" width="12"><rect fill="#9b7fcb" height="24" opacity=".35" rx="1" width="6" x="3" y="16"></rect><ellipse class="flame c" cx="6" cy="11" fill="#f0d878" opacity=".5" rx="3" ry="4.5"></ellipse><ellipse class="flame c" cx="6" cy="12.5" fill="#e89a10" opacity=".38" rx="1.8" ry="2.5"></ellipse><line opacity=".5" stroke="#8f6e20" stroke-width=".8" x1="6" x2="6" y1="16" y2="12"></line></svg>
 </div>
 </section>
 </div>
@@ -606,12 +606,12 @@ footer{
 
 </a>
 <svg fill="none" height="28" style="display:block;margin:30px auto 0;opacity:.38" viewbox="0 0 200 28" width="200">
-<line opacity=".4" stroke="#c9a55a" stroke-width=".5" x1="0" x2="74" y1="14" y2="14"></line>
-<polygon fill="none" opacity=".5" points="80,14 85,9 90,14 85,19" stroke="#c9a55a" stroke-width=".6"></polygon>
-<circle cx="100" cy="14" fill="none" opacity=".48" r="5.5" stroke="#c9a55a" stroke-width=".75"></circle>
-<circle cx="100" cy="14" fill="#c9a55a" opacity=".22" r="2"></circle>
-<polygon fill="none" opacity=".5" points="110,14 115,9 120,14 115,19" stroke="#c9a55a" stroke-width=".6"></polygon>
-<line opacity=".4" stroke="#c9a55a" stroke-width=".5" x1="126" x2="200" y1="14" y2="14"></line>
+<line opacity=".4" stroke="#9b7fcb" stroke-width=".5" x1="0" x2="74" y1="14" y2="14"></line>
+<polygon fill="none" opacity=".5" points="80,14 85,9 90,14 85,19" stroke="#9b7fcb" stroke-width=".6"></polygon>
+<circle cx="100" cy="14" fill="none" opacity=".48" r="5.5" stroke="#9b7fcb" stroke-width=".75"></circle>
+<circle cx="100" cy="14" fill="#9b7fcb" opacity=".22" r="2"></circle>
+<polygon fill="none" opacity=".5" points="110,14 115,9 120,14 115,19" stroke="#9b7fcb" stroke-width=".6"></polygon>
+<line opacity=".4" stroke="#9b7fcb" stroke-width=".5" x1="126" x2="200" y1="14" y2="14"></line>
 </svg>
 </section>
 </div>
@@ -626,12 +626,12 @@ footer{
 <line opacity=".4" stroke="#8f6e20" stroke-width=".6" x1="65" x2="78" y1="50" y2="36"></line>
 <line opacity=".35" stroke="#8f6e20" stroke-width=".5" x1="65" x2="38" y1="44" y2="28"></line>
 <line opacity=".35" stroke="#8f6e20" stroke-width=".5" x1="65" x2="92" y1="44" y2="28"></line>
-<circle cx="65" cy="27" fill="none" opacity=".58" r="8" stroke="#c9a55a" stroke-width=".9"></circle>
-<circle cx="65" cy="27" fill="#c9a55a" opacity=".16" r="3.5"></circle>
-<circle cx="52" cy="29" fill="none" opacity=".52" r="7" stroke="#d4a5a5" stroke-width=".8"></circle>
-<circle cx="78" cy="29" fill="none" opacity=".52" r="7" stroke="#d4a5a5" stroke-width=".8"></circle>
-<circle cx="38" cy="21" fill="none" opacity=".48" r="6" stroke="#c9a55a" stroke-width=".7"></circle>
-<circle cx="92" cy="21" fill="none" opacity=".48" r="6" stroke="#c9a55a" stroke-width=".7"></circle>
+<circle cx="65" cy="27" fill="none" opacity=".58" r="8" stroke="#9b7fcb" stroke-width=".9"></circle>
+<circle cx="65" cy="27" fill="#9b7fcb" opacity=".16" r="3.5"></circle>
+<circle cx="52" cy="29" fill="none" opacity=".52" r="7" stroke="#d4a0c8" stroke-width=".8"></circle>
+<circle cx="78" cy="29" fill="none" opacity=".52" r="7" stroke="#d4a0c8" stroke-width=".8"></circle>
+<circle cx="38" cy="21" fill="none" opacity=".48" r="6" stroke="#9b7fcb" stroke-width=".7"></circle>
+<circle cx="92" cy="21" fill="none" opacity=".48" r="6" stroke="#9b7fcb" stroke-width=".7"></circle>
 </svg>
 <span class="eyebrow">— растау —</span>
 
@@ -656,12 +656,12 @@ footer{
 <!-- ══════════ FOOTER ══════════ -->
 <footer>
 <svg fill="none" height="28" style="display:block;margin:0 auto 14px;opacity:.36" viewbox="0 0 190 28" width="190">
-<line opacity=".4" stroke="#c9a55a" stroke-width=".5" x1="0" x2="70" y1="14" y2="14"></line>
-<circle cx="76" cy="14" fill="none" opacity=".42" r="3" stroke="#c9a55a" stroke-width=".6"></circle>
-<circle cx="95" cy="14" fill="none" opacity=".46" r="6" stroke="#c9a55a" stroke-width=".78"></circle>
-<circle cx="95" cy="14" fill="#c9a55a" opacity=".22" r="2"></circle>
-<circle cx="114" cy="14" fill="none" opacity=".42" r="3" stroke="#c9a55a" stroke-width=".6"></circle>
-<line opacity=".4" stroke="#c9a55a" stroke-width=".5" x1="120" x2="190" y1="14" y2="14"></line>
+<line opacity=".4" stroke="#9b7fcb" stroke-width=".5" x1="0" x2="70" y1="14" y2="14"></line>
+<circle cx="76" cy="14" fill="none" opacity=".42" r="3" stroke="#9b7fcb" stroke-width=".6"></circle>
+<circle cx="95" cy="14" fill="none" opacity=".46" r="6" stroke="#9b7fcb" stroke-width=".78"></circle>
+<circle cx="95" cy="14" fill="#9b7fcb" opacity=".22" r="2"></circle>
+<circle cx="114" cy="14" fill="none" opacity=".42" r="3" stroke="#9b7fcb" stroke-width=".6"></circle>
+<line opacity=".4" stroke="#9b7fcb" stroke-width=".5" x1="120" x2="190" y1="14" y2="14"></line>
 </svg>
 <p class="foot-sub">ТОЙ ИЕЛЕРІ</p>
 
@@ -695,7 +695,7 @@ document.getElementById('s-hero').classList.add('visible');
   const c=document.getElementById('cv-petals'),x=c.getContext('2d');
   const resize=()=>{c.width=innerWidth;c.height=innerHeight;};
   resize();addEventListener('resize',resize);
-  const COLS=['rgba(212,165,165,','rgba(201,165,90,','rgba(218,195,158,','rgba(168,181,160,'];
+  const COLS=['rgba(180,150,220,','rgba(212,160,210,','rgba(196,170,240,','rgba(210,180,230,'];
   const pts=Array.from({length:48},()=>({
     x:Math.random()*innerWidth,y:Math.random()*innerHeight-innerHeight,
     w:Math.random()*10+5,h:Math.random()*6+3,
@@ -729,7 +729,7 @@ document.getElementById('s-hero').classList.add('visible');
     pulse:Math.random()*Math.PI*2,ps:Math.random()*.038+.018,
     dx:(Math.random()-.5)*.15,dy:(Math.random()-.5)*.15,
     o:Math.random()*.24+.05,
-    col:Math.random()>.5?'201,165,90':'195,170,135'
+    col:Math.random()>.5?'155,127,203':'196,160,230'
   }));
   const draw=()=>{
     x.clearRect(0,0,c.width,c.height);
